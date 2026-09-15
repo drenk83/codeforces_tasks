@@ -23,14 +23,13 @@ func main() {
 		line, _ := r.ReadString('\n')
 		parts := strings.Fields(line)
 
-	LOOP:
 		for j, part := range parts {
 			num, _ := strconv.Atoi(part)
 			if num == 1 {
 				out := abs(j-2) + abs(i-2)
 				w.WriteString(strconv.Itoa(out))
 				w.WriteByte('\n')
-				break LOOP
+				return
 			}
 		}
 	}
