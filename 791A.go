@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -12,5 +13,18 @@ func main() {
 	defer w.Flush()
 
 	line, _ := r.ReadString('\n')
-	line = strings.TrimSpace(line)
+	parts := strings.Fields(line)
+
+	a, _ := strconv.Atoi(parts[0])
+	b, _ := strconv.Atoi(parts[1])
+	year := 0
+
+	for a <= b {
+		a *= 3
+		b *= 2
+		year++
+	}
+
+	w.WriteString(strconv.Itoa(year))
+	w.WriteByte('\n')
 }
